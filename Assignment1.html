@@ -1,0 +1,6262 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head></head><body>
+
+
+
+HW1DanielOBrien
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+
+  <div class="border-box-sizing">
+    <div class="container">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Homework 1 DSC 478<a rel="noopener" class="anchor-link" href="#Homework-1-DSC-478">&#182;</a></h1><h2>Daniel O&#39;Brien<a rel="noopener" class="anchor-link" href="#Daniel-O&#39;Brien">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Question 1<a rel="noopener" class="anchor-link" href="#Question-1">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#importing the necessary libraries</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#reading in the csv file</span>
+<span class="n">bankTable</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/Users/danielobrien/bank_data.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">bankTable</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[2]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(600, 11)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Looking at </span>
+<span class="n">bankTable</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[3]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>income</th>
+      <th>children</th>
+      <th>gender</th>
+      <th>region</th>
+      <th>married</th>
+      <th>car</th>
+      <th>savings_acct</th>
+      <th>current_acct</th>
+      <th>mortgage</th>
+      <th>pep</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ID12101</th>
+      <td>48</td>
+      <td>17546.00</td>
+      <td>1</td>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>ID12102</th>
+      <td>40</td>
+      <td>30085.10</td>
+      <td>3</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>ID12103</th>
+      <td>51</td>
+      <td>16575.40</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>ID12104</th>
+      <td>23</td>
+      <td>20375.40</td>
+      <td>3</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>ID12105</th>
+      <td>57</td>
+      <td>50576.30</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>RURAL</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>ID12106</th>
+      <td>57</td>
+      <td>37869.60</td>
+      <td>2</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>ID12107</th>
+      <td>22</td>
+      <td>8877.07</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>RURAL</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>ID12108</th>
+      <td>58</td>
+      <td>24946.60</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>ID12109</th>
+      <td>37</td>
+      <td>25304.30</td>
+      <td>2</td>
+      <td>FEMALE</td>
+      <td>SUBURBAN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>ID12110</th>
+      <td>54</td>
+      <td>24212.10</td>
+      <td>2</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bankTable</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[4]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>age               int64
+income          float64
+children          int64
+gender           object
+region           object
+married          object
+car              object
+savings_acct     object
+current_acct     object
+mortgage         object
+pep              object
+dtype: object</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bankTable</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[5]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>income</th>
+      <th>children</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>600.000000</td>
+      <td>600.000000</td>
+      <td>600.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>42.395000</td>
+      <td>27524.031217</td>
+      <td>1.011667</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>14.424947</td>
+      <td>12899.468246</td>
+      <td>1.056752</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>18.000000</td>
+      <td>5014.210000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>30.000000</td>
+      <td>17264.500000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>42.000000</td>
+      <td>24925.300000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>55.250000</td>
+      <td>36172.675000</td>
+      <td>2.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>67.000000</td>
+      <td>63130.100000</td>
+      <td>3.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Age, Income and Children<a rel="noopener" class="anchor-link" href="#Age,-Income-and-Children">&#182;</a></h1><h2>Age<a rel="noopener" class="anchor-link" href="#Age">&#182;</a></h2><p>The mean of age is a little above 42 years of age with the youngest age recorded as 18 years old and the oldest age of 67 years old. The median is slightly lower than the mean with a median of 42 years old. The IQR is 25.25 years with a third quartile of 55.25 years and a first quartile  of 30 years of age.</p>
+<h2>Income<a rel="noopener" class="anchor-link" href="#Income">&#182;</a></h2><p>The highest income amount is 63,130.10 and the lowest income level is 5,014.21. This gives a range of 58,115.89. The mean of income is 27,524.03 and the median is slightly lower at 24,925.30. The IQR is 18,908.18 with a third quartile of 36,172.68 and a first quartile of 17,26450.</p>
+<h2>Children<a rel="noopener" class="anchor-link" href="#Children">&#182;</a></h2><p>The minimum value for children is 0 and the maximum value is 3. This tells us that at most customers of the bank have three children, while some customers have no children. The mean number of children is slightly above 1, while the median is just a bit lower at exactly 1. The third quartile is 2 children and the first quartile is 0 children. This seems to indicate that the families with 3 children are a bit of an expection.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bankTable</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;gender&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[6]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>gender</th>
+      <th>FEMALE</th>
+      <th>MALE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="8" valign="top">age</th>
+      <th>count</th>
+      <td>300.000000</td>
+      <td>300.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>43.693333</td>
+      <td>41.096667</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>14.672545</td>
+      <td>14.077924</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>18.000000</td>
+      <td>18.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>31.000000</td>
+      <td>29.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>44.000000</td>
+      <td>40.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>57.000000</td>
+      <td>52.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>67.000000</td>
+      <td>67.000000</td>
+    </tr>
+    <tr>
+      <th rowspan="8" valign="top">income</th>
+      <th>count</th>
+      <td>300.000000</td>
+      <td>300.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>27831.368233</td>
+      <td>27216.694200</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>13031.258242</td>
+      <td>12780.682144</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>7549.380000</td>
+      <td>5014.210000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>17711.100000</td>
+      <td>16805.175000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>25448.900000</td>
+      <td>24449.200000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>34873.100000</td>
+      <td>36610.850000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>63130.100000</td>
+      <td>59409.100000</td>
+    </tr>
+    <tr>
+      <th rowspan="8" valign="top">children</th>
+      <th>count</th>
+      <td>300.000000</td>
+      <td>300.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>1.026667</td>
+      <td>0.996667</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>1.078502</td>
+      <td>1.036131</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>1.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>2.000000</td>
+      <td>2.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>3.000000</td>
+      <td>3.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Gender<a rel="noopener" class="anchor-link" href="#Gender">&#182;</a></h1><h3>Age<a rel="noopener" class="anchor-link" href="#Age">&#182;</a></h3><p>The mean and median ages for females are 43.7 and 44, while the mean and median ages for men are sligtly lower at 41.1 and 40. This indicates that female customers are slightly older or there are more female customers that are older or more younger male customers. The maximum and minimum ages for both female and male customers is 67 and 18 respectively.</p>
+<h3>Income<a rel="noopener" class="anchor-link" href="#Income">&#182;</a></h3><p>The minimum and maximum income for female customers are 7,549.38 and 63,130.10 respectively, while the minimum and maximum income for male customers are 5,014.21 and 59,409.10 respectively. This shows that the highest paid female customer is paid more than the highest paid male customer and the lowest paid male customer is paid lower than the lowest paid female customer. The mean and median female incomes are 27,831.37 and 25,448.90 and the mean and median male incomes are 27,216.69 and 24,449.20. This shows that on average female customers are paid more than 600 dollars more than male customers.</p>
+<h3>Children<a rel="noopener" class="anchor-link" href="#Children">&#182;</a></h3><p>The mean number of children for female customers, 1.027, is slightly higher than the mean number of children for male customers, 0.997. This shows that the average female customer is only slightly more likely to have more children, although the difference is not great.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bankTable</span><span class="p">[</span><span class="s2">&quot;region&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[7]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>INNER_CITY    269
+TOWN          173
+RURAL          96
+SUBURBAN       62
+Name: region, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bankTable</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;region&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[8]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>region</th>
+      <th>INNER_CITY</th>
+      <th>RURAL</th>
+      <th>SUBURBAN</th>
+      <th>TOWN</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="8" valign="top">age</th>
+      <th>count</th>
+      <td>269.000000</td>
+      <td>96.000000</td>
+      <td>62.000000</td>
+      <td>173.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>41.992565</td>
+      <td>43.010417</td>
+      <td>43.725806</td>
+      <td>42.202312</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>14.987306</td>
+      <td>14.396268</td>
+      <td>15.222039</td>
+      <td>13.299309</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>18.000000</td>
+      <td>18.000000</td>
+      <td>18.000000</td>
+      <td>19.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>28.000000</td>
+      <td>31.000000</td>
+      <td>30.250000</td>
+      <td>33.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>41.000000</td>
+      <td>44.000000</td>
+      <td>45.000000</td>
+      <td>41.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>56.000000</td>
+      <td>55.250000</td>
+      <td>58.000000</td>
+      <td>52.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>67.000000</td>
+      <td>67.000000</td>
+      <td>67.000000</td>
+      <td>67.000000</td>
+    </tr>
+    <tr>
+      <th rowspan="8" valign="top">income</th>
+      <th>count</th>
+      <td>269.000000</td>
+      <td>96.000000</td>
+      <td>62.000000</td>
+      <td>173.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>26843.999963</td>
+      <td>30027.605417</td>
+      <td>28656.356935</td>
+      <td>26786.349653</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>13015.863373</td>
+      <td>13699.154297</td>
+      <td>13888.950040</td>
+      <td>11756.638715</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>6294.210000</td>
+      <td>8639.240000</td>
+      <td>8143.750000</td>
+      <td>5014.210000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>16352.200000</td>
+      <td>19543.175000</td>
+      <td>17672.975000</td>
+      <td>18504.300000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>24262.800000</td>
+      <td>27630.150000</td>
+      <td>25430.000000</td>
+      <td>24867.600000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>36166.200000</td>
+      <td>41750.600000</td>
+      <td>37291.175000</td>
+      <td>33204.300000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>61554.600000</td>
+      <td>57398.100000</td>
+      <td>63130.100000</td>
+      <td>59803.900000</td>
+    </tr>
+    <tr>
+      <th rowspan="8" valign="top">children</th>
+      <th>count</th>
+      <td>269.000000</td>
+      <td>96.000000</td>
+      <td>62.000000</td>
+      <td>173.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>0.951673</td>
+      <td>1.229167</td>
+      <td>0.967742</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>1.019167</td>
+      <td>1.156029</td>
+      <td>1.039668</td>
+      <td>1.056541</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>2.000000</td>
+      <td>2.000000</td>
+      <td>2.000000</td>
+      <td>2.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>3.000000</td>
+      <td>3.000000</td>
+      <td>3.000000</td>
+      <td>3.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Region<a rel="noopener" class="anchor-link" href="#Region">&#182;</a></h1><p>There are 4 different regions in this dataset, Innter City, Rural, Suburban and Town. Customers from the inner city make up the most customers, 269, followed by customers in town, 173, and then rural customers, 96 and the smallest number of customers come from suburban areas with 62 customers.</p>
+<h3>Age<a rel="noopener" class="anchor-link" href="#Age">&#182;</a></h3><p>The oldest and youngest customers from inner city, suburban and rural areas have the same ages with oldest customers with the age of 67 and youngest customers with an age of 18. The oldest customers from a Town are also ages 67, however the youngest customers are 19 years old. Customers from an inner city have the lowest mean age of 41.99, while customers from suburban areas have the oldest mean age of 43.73. The lowest median age is 41 for both town and inner city, while the highest median age is from suburban areas.</p>
+<h3>Income<a rel="noopener" class="anchor-link" href="#Income">&#182;</a></h3><p>The highest mean income comes from rural areas with a mean of 30027.61 and the lowest mean income comes from town with 26786.35. The highest median income come from rural areas as well with a median income of 27630.15 while the area with the lowest median income is inner city with a median income of 24262.80. The highest overall salary comes from a suburban area with a salary of 63130.10, while the lowest overall income coming from a town with a minimum income of 5014.21.</p>
+<h3>Children<a rel="noopener" class="anchor-link" href="#Children">&#182;</a></h3><p>The area with the highest mean number of children is rural areas with a mean of 1.23, the area with the lowest mean number of children is inner city areas with a mean number of children of 0.95. All areas have a minimum number of children of 0 with a maximum number of children of 3.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bankTable</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;married&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[9]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>married</th>
+      <th>NO</th>
+      <th>YES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="8" valign="top">age</th>
+      <th>count</th>
+      <td>204.000000</td>
+      <td>396.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>42.186275</td>
+      <td>42.502525</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>14.477590</td>
+      <td>14.414918</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>18.000000</td>
+      <td>18.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>29.750000</td>
+      <td>30.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>43.000000</td>
+      <td>42.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>54.500000</td>
+      <td>55.250000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>67.000000</td>
+      <td>67.000000</td>
+    </tr>
+    <tr>
+      <th rowspan="8" valign="top">income</th>
+      <th>count</th>
+      <td>204.000000</td>
+      <td>396.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>27674.627108</td>
+      <td>27446.451515</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>13391.270334</td>
+      <td>12655.229551</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>5014.210000</td>
+      <td>7723.930000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>16816.000000</td>
+      <td>17555.250000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>25890.650000</td>
+      <td>24718.250000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>36300.875000</td>
+      <td>36113.475000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>60747.500000</td>
+      <td>63130.100000</td>
+    </tr>
+    <tr>
+      <th rowspan="8" valign="top">children</th>
+      <th>count</th>
+      <td>204.000000</td>
+      <td>396.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>1.083333</td>
+      <td>0.974747</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>1.068085</td>
+      <td>1.050313</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>1.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>2.000000</td>
+      <td>2.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>3.000000</td>
+      <td>3.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Married<a rel="noopener" class="anchor-link" href="#Married">&#182;</a></h1><p>There are more married customers, 396, than unmarried customers, 204.</p>
+<h3>Age<a rel="noopener" class="anchor-link" href="#Age">&#182;</a></h3><p>The maximum and minimum ages for married and unmarried customers is the same with 67 and 18 years of age respectively. The mean age of married customers is slightly higher than the mean of unmarried customers, 42.5 years of age to 42.2 years of age respectively. However the median age of umarried people is higher than the median age of married people, 43 and 42 years of age repsectvely.</p>
+<h3>Income<a rel="noopener" class="anchor-link" href="#Income">&#182;</a></h3><p>The minimum and maximum incomes are pretty similar for married and unmarried customers, with married customers having a slightly higher minimum and maximum. There is a min and max for married customers of 7723.93 and 63130.10 and a min and max of umarried customers of 5014.21 and 60747.50. The mean (27674.63) and median income (25,890.65) of unmarried customers is slightly higher than the mean(27,446.45) and median(24,718.25) of married customers.</p>
+<h3>Children<a rel="noopener" class="anchor-link" href="#Children">&#182;</a></h3><p>The minimum(0) and maximum(3) number of children for married and umarried customers is the same. The mean number of children for umarried customers(1.083) is slightly higher than the mean number of children for married customers(0.975)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bankTable</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;car&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[10]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>car</th>
+      <th>NO</th>
+      <th>YES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="8" valign="top">age</th>
+      <th>count</th>
+      <td>304.000000</td>
+      <td>296.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>41.289474</td>
+      <td>43.530405</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>14.488931</td>
+      <td>14.294449</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>18.000000</td>
+      <td>18.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>28.000000</td>
+      <td>32.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>41.000000</td>
+      <td>43.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>53.250000</td>
+      <td>56.250000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>67.000000</td>
+      <td>67.000000</td>
+    </tr>
+    <tr>
+      <th rowspan="8" valign="top">income</th>
+      <th>count</th>
+      <td>304.000000</td>
+      <td>296.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>26486.807336</td>
+      <td>28589.288176</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>12973.040522</td>
+      <td>12757.662091</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>6294.210000</td>
+      <td>5014.210000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>16383.850000</td>
+      <td>18046.675000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>23312.550000</td>
+      <td>26665.200000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>34598.275000</td>
+      <td>36591.500000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>61554.600000</td>
+      <td>63130.100000</td>
+    </tr>
+    <tr>
+      <th rowspan="8" valign="top">children</th>
+      <th>count</th>
+      <td>304.000000</td>
+      <td>296.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>0.973684</td>
+      <td>1.050676</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>1.055849</td>
+      <td>1.058044</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>1.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>2.000000</td>
+      <td>2.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>3.000000</td>
+      <td>3.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Car<a rel="noopener" class="anchor-link" href="#Car">&#182;</a></h1><p>There are slightly more customers who do not own a car(304), than customers who do own a car(296).</p>
+<h3>Age<a rel="noopener" class="anchor-link" href="#Age">&#182;</a></h3><p>The mean(43.53) and median(43) ages of customers who own cars is slightly higher than the mean(41.29) and median(41) ages of customers who do not own cars. The max and min ages of customers who do and do not own cars in the same.</p>
+<h3>Income<a rel="noopener" class="anchor-link" href="#Income">&#182;</a></h3><p>The max(63,130.10) and min(5,014.21) incomes of customers who do own cars are larger and smaller respectively that the max(61,554.60) and min(6,294.21) incomes of customers who do not own cars. The mean(28589.29) and median(26665.20) incomes of people who own cars is higher than the mean(26486.81) and median(23312.55) incomes of customers who do not own cars.</p>
+<h3>Children<a rel="noopener" class="anchor-link" href="#Children">&#182;</a></h3><p>The mean number of children is higher for customers who own cars(1.05) than customers who do not own cars(0.97).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bankTable</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;savings_acct&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[11]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>savings_acct</th>
+      <th>NO</th>
+      <th>YES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="8" valign="top">age</th>
+      <th>count</th>
+      <td>186.000000</td>
+      <td>414.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>38.430108</td>
+      <td>44.176329</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>13.309129</td>
+      <td>14.566548</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>18.000000</td>
+      <td>18.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>27.000000</td>
+      <td>32.250000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>37.500000</td>
+      <td>45.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>48.000000</td>
+      <td>57.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>67.000000</td>
+      <td>67.000000</td>
+    </tr>
+    <tr>
+      <th rowspan="8" valign="top">income</th>
+      <th>count</th>
+      <td>186.000000</td>
+      <td>414.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>22405.999194</td>
+      <td>29823.436908</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>8151.117426</td>
+      <td>13945.481952</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>7549.380000</td>
+      <td>5014.210000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>16307.225000</td>
+      <td>17886.525000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>22281.250000</td>
+      <td>27734.600000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>27968.225000</td>
+      <td>41005.225000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>39547.800000</td>
+      <td>63130.100000</td>
+    </tr>
+    <tr>
+      <th rowspan="8" valign="top">children</th>
+      <th>count</th>
+      <td>186.000000</td>
+      <td>414.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>0.946237</td>
+      <td>1.041063</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>1.069130</td>
+      <td>1.051117</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>1.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>2.000000</td>
+      <td>2.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>3.000000</td>
+      <td>3.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Savings Account<a rel="noopener" class="anchor-link" href="#Savings-Account">&#182;</a></h1><p>There are 414 customers who have savings accounts and 186 customers who do not have savings accounts.</p>
+<h3>Age<a rel="noopener" class="anchor-link" href="#Age">&#182;</a></h3><p>The minimum and maximum ages for customers with and without savings accounts are the same. The mean(44.18) and median(45) ages of customers with savings accounts is considerably higher than the mean(38.43) and median(37.5) ages of customers without savings accounts. The IQR of ages of customers with savings accounts is 24.75, while the IQR of ages of customers without savings accounts is 21, this shows us that there is a wider age range of customers who have a savings account.</p>
+<h3>Income<a rel="noopener" class="anchor-link" href="#Income">&#182;</a></h3><p>The mean(29,823.44) and median(27,734.60) incomes of customers with savings accounts is higher than the mean(22,406) and median(22281.25) incomes of customers without savings accounts.</p>
+<h3>Children<a rel="noopener" class="anchor-link" href="#Children">&#182;</a></h3><p>The mean number of children with savings accounts(1.04) is higher than the mean number of children for customers without savings account(0.94).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bankTable</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;current_acct&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[12]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>current_acct</th>
+      <th>NO</th>
+      <th>YES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="8" valign="top">age</th>
+      <th>count</th>
+      <td>145.000000</td>
+      <td>455.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>43.296552</td>
+      <td>42.107692</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>13.741727</td>
+      <td>14.638953</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>18.000000</td>
+      <td>18.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>32.000000</td>
+      <td>29.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>42.000000</td>
+      <td>42.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>57.000000</td>
+      <td>54.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>67.000000</td>
+      <td>67.000000</td>
+    </tr>
+    <tr>
+      <th rowspan="8" valign="top">income</th>
+      <th>count</th>
+      <td>145.000000</td>
+      <td>455.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>26802.195655</td>
+      <td>27754.066725</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>11841.829836</td>
+      <td>13222.825776</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>7606.250000</td>
+      <td>5014.210000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>17839.900000</td>
+      <td>17144.350000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>24554.100000</td>
+      <td>25132.900000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>33615.400000</td>
+      <td>36594.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>57880.700000</td>
+      <td>63130.100000</td>
+    </tr>
+    <tr>
+      <th rowspan="8" valign="top">children</th>
+      <th>count</th>
+      <td>145.000000</td>
+      <td>455.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>1.000000</td>
+      <td>1.015385</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>1.060660</td>
+      <td>1.056647</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>1.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>2.000000</td>
+      <td>2.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>3.000000</td>
+      <td>3.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Current Account<a rel="noopener" class="anchor-link" href="#Current-Account">&#182;</a></h1><p>There are 455 customers who currently have an account and 145 customers who do not currently have an account.</p>
+<h3>Age<a rel="noopener" class="anchor-link" href="#Age">&#182;</a></h3><p>The median age of customers with and without an account is the same at 42 years old. The mean age of customers without an account is slightly higher than customers without an account at 43.40 and 42.1 respectively.</p>
+<h3>Income<a rel="noopener" class="anchor-link" href="#Income">&#182;</a></h3><p>The mean(27754.07) and median(25132.90) income of customers with an account is slightly higher than the mean(26802.2) and median(24554.10) income of customers without an account.</p>
+<h3>Children<a rel="noopener" class="anchor-link" href="#Children">&#182;</a></h3><p>The number of children for customers with and without an account is very similar. There is a slightly higher mean number of children for customers with an account(1.02) than the mean number of children for customers without and account(1).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bankTable</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;mortgage&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[13]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mortgage</th>
+      <th>NO</th>
+      <th>YES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="8" valign="top">age</th>
+      <th>count</th>
+      <td>391.000000</td>
+      <td>209.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>42.565217</td>
+      <td>42.076555</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>14.461805</td>
+      <td>14.384951</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>18.000000</td>
+      <td>18.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>30.000000</td>
+      <td>31.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>43.000000</td>
+      <td>41.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>54.500000</td>
+      <td>56.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>67.000000</td>
+      <td>67.000000</td>
+    </tr>
+    <tr>
+      <th rowspan="8" valign="top">income</th>
+      <th>count</th>
+      <td>391.000000</td>
+      <td>209.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>27662.194680</td>
+      <td>27265.553158</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>13199.249366</td>
+      <td>12345.988391</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>7549.380000</td>
+      <td>5014.210000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>17144.350000</td>
+      <td>17866.900000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>25127.700000</td>
+      <td>24763.300000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>36434.600000</td>
+      <td>34852.300000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>63130.100000</td>
+      <td>60747.500000</td>
+    </tr>
+    <tr>
+      <th rowspan="8" valign="top">children</th>
+      <th>count</th>
+      <td>391.000000</td>
+      <td>209.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>1.069054</td>
+      <td>0.904306</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>1.073140</td>
+      <td>1.019252</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>1.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>2.000000</td>
+      <td>2.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>3.000000</td>
+      <td>3.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Mortgage<a rel="noopener" class="anchor-link" href="#Mortgage">&#182;</a></h1><p>209 customers also have a mortgage, and 391 customers do not have a mortgage.</p>
+<h3>Age<a rel="noopener" class="anchor-link" href="#Age">&#182;</a></h3><p>The ages of customers with and without mortgages is pretty similar. The mean(42.57) and median(43) ages of customers without a mortgage is slightly higher than the mean(42.08) and median(41) ages of customers with a mortgage.</p>
+<h3>Income<a rel="noopener" class="anchor-link" href="#Income">&#182;</a></h3><p>The mean(27662.19) and median(25127.70) income is slightly higher for customers without a mortgage than the mean(27265.55) and median(24763.30) income for customers with a mortgage.</p>
+<h3>Children<a rel="noopener" class="anchor-link" href="#Children">&#182;</a></h3><p>The mean number of children for customers without a mortgage(1.07) is slightly higher than the mean number of children for customers without a mortgage(0.90)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bankTable</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;pep&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[14]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pep</th>
+      <th>NO</th>
+      <th>YES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="8" valign="top">age</th>
+      <th>count</th>
+      <td>326.000000</td>
+      <td>274.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>40.098160</td>
+      <td>45.127737</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>14.123506</td>
+      <td>14.327991</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>18.000000</td>
+      <td>18.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>27.000000</td>
+      <td>34.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>40.000000</td>
+      <td>45.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>51.000000</td>
+      <td>58.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>67.000000</td>
+      <td>67.000000</td>
+    </tr>
+    <tr>
+      <th rowspan="8" valign="top">income</th>
+      <th>count</th>
+      <td>326.000000</td>
+      <td>274.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>24900.953374</td>
+      <td>30644.919453</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>11661.123422</td>
+      <td>13609.613043</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>5014.210000</td>
+      <td>7756.360000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>15366.475000</td>
+      <td>19639.475000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>23105.000000</td>
+      <td>28080.050000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>31210.900000</td>
+      <td>38458.350000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>61554.600000</td>
+      <td>63130.100000</td>
+    </tr>
+    <tr>
+      <th rowspan="8" valign="top">children</th>
+      <th>count</th>
+      <td>326.000000</td>
+      <td>274.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>1.067485</td>
+      <td>0.945255</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>1.195524</td>
+      <td>0.860571</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>0.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>2.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>3.000000</td>
+      <td>3.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Pep<a rel="noopener" class="anchor-link" href="#Pep">&#182;</a></h1><p>There are 274 customers who use the Pep product and 326 customers who do not use the Pep product.</p>
+<h3>Age<a rel="noopener" class="anchor-link" href="#Age">&#182;</a></h3><p>The mean(45.13) and median(45) age of customers who use the Pep product is higher than the mean(40.1) and median(40) income of customers who do not use the Pep product.</p>
+<h3>Income<a rel="noopener" class="anchor-link" href="#Income">&#182;</a></h3><p>The mean(30,644.92) and median(28,080.05) income is higher for customers who use the Pep product than the mean(24,900.95) and median(23,105.00) income for customers who do not use the Pep product.</p>
+<h3>Children<a rel="noopener" class="anchor-link" href="#Children">&#182;</a></h3><p>The mean number of children for customers who do not use the Pep product (1.07) is slightly higher than the mean number of children for customers who use the Pep product(0.94)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Question 2<a rel="noopener" class="anchor-link" href="#Question-2">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">pepCust</span> <span class="o">=</span> <span class="n">bankTable</span><span class="p">[(</span><span class="n">bankTable</span><span class="o">.</span><span class="n">pep</span> <span class="o">==</span><span class="s1">&#39;YES&#39;</span><span class="p">)]</span>
+<span class="n">noPepCust</span> <span class="o">=</span> <span class="n">bankTable</span><span class="p">[(</span><span class="n">bankTable</span><span class="o">.</span><span class="n">pep</span><span class="o">==</span><span class="s1">&#39;NO&#39;</span><span class="p">)]</span>
+<span class="n">pepCust</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[15]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>income</th>
+      <th>children</th>
+      <th>gender</th>
+      <th>region</th>
+      <th>married</th>
+      <th>car</th>
+      <th>savings_acct</th>
+      <th>current_acct</th>
+      <th>mortgage</th>
+      <th>pep</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ID12101</th>
+      <td>48</td>
+      <td>17546.00</td>
+      <td>1</td>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>ID12106</th>
+      <td>57</td>
+      <td>37869.60</td>
+      <td>2</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>ID12107</th>
+      <td>22</td>
+      <td>8877.07</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>RURAL</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>ID12113</th>
+      <td>44</td>
+      <td>15735.80</td>
+      <td>1</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>ID12114</th>
+      <td>66</td>
+      <td>55204.70</td>
+      <td>1</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>ID12119</th>
+      <td>62</td>
+      <td>26909.20</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>ID12121</th>
+      <td>61</td>
+      <td>57880.70</td>
+      <td>2</td>
+      <td>MALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>ID12128</th>
+      <td>39</td>
+      <td>20114.00</td>
+      <td>1</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>ID12130</th>
+      <td>61</td>
+      <td>24270.10</td>
+      <td>1</td>
+      <td>MALE</td>
+      <td>RURAL</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>ID12133</th>
+      <td>45</td>
+      <td>23443.20</td>
+      <td>1</td>
+      <td>MALE</td>
+      <td>SUBURBAN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">noPepCust</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[16]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>income</th>
+      <th>children</th>
+      <th>gender</th>
+      <th>region</th>
+      <th>married</th>
+      <th>car</th>
+      <th>savings_acct</th>
+      <th>current_acct</th>
+      <th>mortgage</th>
+      <th>pep</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ID12102</th>
+      <td>40</td>
+      <td>30085.1</td>
+      <td>3</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>ID12103</th>
+      <td>51</td>
+      <td>16575.4</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>ID12104</th>
+      <td>23</td>
+      <td>20375.4</td>
+      <td>3</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>ID12105</th>
+      <td>57</td>
+      <td>50576.3</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>RURAL</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>ID12108</th>
+      <td>58</td>
+      <td>24946.6</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>ID12109</th>
+      <td>37</td>
+      <td>25304.3</td>
+      <td>2</td>
+      <td>FEMALE</td>
+      <td>SUBURBAN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>ID12110</th>
+      <td>54</td>
+      <td>24212.1</td>
+      <td>2</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>ID12111</th>
+      <td>66</td>
+      <td>59803.9</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>ID12112</th>
+      <td>52</td>
+      <td>26658.8</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>ID12115</th>
+      <td>36</td>
+      <td>19474.6</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>RURAL</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">pepCust</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[17]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>income</th>
+      <th>children</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>274.000000</td>
+      <td>274.000000</td>
+      <td>274.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>45.127737</td>
+      <td>30644.919453</td>
+      <td>0.945255</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>14.327991</td>
+      <td>13609.613043</td>
+      <td>0.860571</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>18.000000</td>
+      <td>7756.360000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>34.000000</td>
+      <td>19639.475000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>45.000000</td>
+      <td>28080.050000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>58.000000</td>
+      <td>38458.350000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>67.000000</td>
+      <td>63130.100000</td>
+      <td>3.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">noPepCust</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[18]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>income</th>
+      <th>children</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>326.000000</td>
+      <td>326.000000</td>
+      <td>326.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>40.098160</td>
+      <td>24900.953374</td>
+      <td>1.067485</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>14.123506</td>
+      <td>11661.123422</td>
+      <td>1.195524</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>18.000000</td>
+      <td>5014.210000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>27.000000</td>
+      <td>15366.475000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>40.000000</td>
+      <td>23105.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>51.000000</td>
+      <td>31210.900000</td>
+      <td>2.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>67.000000</td>
+      <td>61554.600000</td>
+      <td>3.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">pepCust</span><span class="p">[</span><span class="s2">&quot;region&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[19]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>INNER_CITY    123
+TOWN           71
+RURAL          46
+SUBURBAN       34
+Name: region, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[20]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">noPepCust</span><span class="p">[</span><span class="s2">&quot;region&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[20]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>INNER_CITY    146
+TOWN          102
+RURAL          50
+SUBURBAN       28
+Name: region, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[21]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">pepCust</span><span class="p">[</span><span class="s2">&quot;gender&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[21]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>MALE      144
+FEMALE    130
+Name: gender, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[22]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">noPepCust</span><span class="p">[</span><span class="s2">&quot;gender&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[22]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>FEMALE    170
+MALE      156
+Name: gender, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">pepCust</span><span class="p">[</span><span class="s2">&quot;married&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[23]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>YES    154
+NO     120
+Name: married, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[24]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">noPepCust</span><span class="p">[</span><span class="s2">&quot;married&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[24]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>YES    242
+NO      84
+Name: married, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[25]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">pepCust</span><span class="p">[</span><span class="s2">&quot;car&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[25]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>YES    138
+NO     136
+Name: car, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[26]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">noPepCust</span><span class="p">[</span><span class="s2">&quot;car&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[26]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>NO     168
+YES    158
+Name: car, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[27]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">pepCust</span><span class="p">[</span><span class="s2">&quot;savings_acct&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[27]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>YES    179
+NO      95
+Name: savings_acct, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[28]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">noPepCust</span><span class="p">[</span><span class="s2">&quot;savings_acct&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[28]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>YES    235
+NO      91
+Name: savings_acct, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[29]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">pepCust</span><span class="p">[</span><span class="s2">&quot;current_acct&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[29]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>YES    211
+NO      63
+Name: current_acct, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[30]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">noPepCust</span><span class="p">[</span><span class="s2">&quot;current_acct&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[30]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>YES    244
+NO      82
+Name: current_acct, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[31]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">pepCust</span><span class="p">[</span><span class="s2">&quot;mortgage&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[31]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>NO     182
+YES     92
+Name: mortgage, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[32]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">noPepCust</span><span class="p">[</span><span class="s2">&quot;mortgage&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[32]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>NO     209
+YES    117
+Name: mortgage, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Pep Vs No Pep<a rel="noopener" class="anchor-link" href="#Pep-Vs-No-Pep">&#182;</a></h1><h3>Age<a rel="noopener" class="anchor-link" href="#Age">&#182;</a></h3><p>The average customer who buys a Pep is about 5 years older than the average customer who does not buy the Pep product. The mean of customers who buy the Pep is 45.13 years of age, while the mean age of customers who do not buy the Pep is 40.1 years of age. For customers who purchase the Pep product, the 3rd quartile is 58 years of age and the 1st quartile is 34 years of age, which gives IQR of 24 years. For customers who do not purchase the Pep product, the 3rd quartile is 51 years of age, and the 1st quartile is 27 years of age, which gives an IQR of 24 years also. This shows that customers who buy the Pep product tend to be older than customers who do not buy the Pep product.</p>
+<h3>Income<a rel="noopener" class="anchor-link" href="#Income">&#182;</a></h3><p>The average income for customers who purchase a Pep product is 5,743.97 more than the income of customers who have not purchased a Pep product. The average income for customers who purchased a Pep product is 30,644.92 and the average income for customers who did not purchase a Pep product is 24,900.95. The 1st and 3rd quartile for customers who purchased a Pep product are 19,639.48 and 38,458.35 respectively, with an IQR of 18,818.87. The 1st and 3rd quartile for customers who did not purchase a Pep product are 15,366.48 and 31,210.90 respectively, with an IQR of 15,844.42. This shows that customers who purchase the Pep product tend to earn a higher income than customers who do not purchase a Pep product.</p>
+<h3>Children<a rel="noopener" class="anchor-link" href="#Children">&#182;</a></h3><p>The mean number of children for customers who do not use the Pep product (1.07) is slightly higher than the mean number of children for customers who use the Pep product(0.94). Additionally, customers who purchase a Pep product have a 3rd quartile number of students of 1, while customers who did not purchase the Pep product have a 3rd quartile of 2 children. This shows that less than 25% of customers who use the Pep product have more than 1 child. This indicates that customers or potential customers who have 1 child or less are more likely to be interested in the Pep product than customers or potential customers with more than 1 child.</p>
+<h3>Gender<a rel="noopener" class="anchor-link" href="#Gender">&#182;</a></h3><p>There are 144 male customers and 130 female customers who purchase the Pep product. There are 170 male customers and 156 female customers who do not use the Pep product. About 46% of current male customers use the Pep proudct and about 45% of current female customers use the Pep product. There are more male customers overall, and more male than female customers that both use and do not use the Pep product.</p>
+<h3>Region<a rel="noopener" class="anchor-link" href="#Region">&#182;</a></h3><p>123 inner city customers out of 269 total inner city customers use the Pep product, this makes up about 46% of inner city customers. There are 71 out of a total of 173 customers from towns that use the Pep product, this makes up about 41% of customers from towns. There are 46 out of 96 customers from rural areas that use the Pep product, which makes up almost 48% of rural customers. There are 34 out of 62 customers from suburban regions that use the Pep product, this makes up almost 56% of suburban customers. This shows that of the current customers, suburban customers are the most likely to use the Pep product, with customers from towns being the least likely to use the Pep product.</p>
+<h3>Married<a rel="noopener" class="anchor-link" href="#Married">&#182;</a></h3><p>Of the 396 married customers, 154 use the Pep product, this give us the percentage of about 39%. Of the 204 unmarried customers, 120 use the Pep product, or 59%. This shows that of the current customers, unmarried customers are more likely to purchase the Pep product.</p>
+<h3>Car<a rel="noopener" class="anchor-link" href="#Car">&#182;</a></h3><p>Of the 306 customers who own a car, 138 or 45% of them purchased the Pep product. Of the 294 customers who do not own a car, 136 or 46% of them have purchased the Pep product, this is not a very big difference.</p>
+<h3>Savings Account<a rel="noopener" class="anchor-link" href="#Savings-Account">&#182;</a></h3><p>Of the 414 customers who have a savings account, 179 have purchased the Pep product, this makes up 43% of customers who have a savings account. Of the 186 customers who do not have a savings account, 95 have purchased the Pep product, this makes up, 51%. This shows that customers who do not have a savings account are more likely to have purchased the Pep product.</p>
+<h3>Current Account<a rel="noopener" class="anchor-link" href="#Current-Account">&#182;</a></h3><p>Of the 455 customers who currently have an account, 211 of them have purchased the Pep product, this makes up 46% of customers. Of the 145 customers who currently do not have an account, 63 of them have purchased the Pep product, this makes up 43%. This shows that customers who currently have an account are more likely that have purchased the Pep product.</p>
+<h3>Mortgage<a rel="noopener" class="anchor-link" href="#Mortgage">&#182;</a></h3><p>Of the 391 customers who have a mortgage, 182 of them have purchased the Pep product, giving us about 47% of customers that have a mortgage. Of the 209 customers who do not have a mortgage, 92 of them have purchased the Pep product, giving us 44% of current customers who do not have a mortgage. This shows that customers without a mortgage are less likely to purchase the Pep product.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Question 3<a rel="noopener" class="anchor-link" href="#Question-3">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[33]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">income_z</span> <span class="o">=</span> <span class="p">(</span><span class="n">bankTable</span><span class="p">[</span><span class="s2">&quot;income&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">bankTable</span><span class="p">[</span><span class="s2">&quot;income&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">/</span><span class="n">bankTable</span><span class="p">[</span><span class="s2">&quot;income&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">income_z</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[33]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>id
+ID12101   -0.773523
+ID12102    0.198541
+ID12103   -0.848766
+ID12104   -0.554180
+ID12105    1.787071
+Name: income, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Question 4<a rel="noopener" class="anchor-link" href="#Question-4">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[34]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">age_bin</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">bankTable</span><span class="o">.</span><span class="n">age</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">age_bin</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[34]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>id
+ID12101      (35.0, 49.0]
+ID12102      (35.0, 49.0]
+ID12103      (49.0, 67.0]
+ID12104    (17.999, 35.0]
+ID12105      (49.0, 67.0]
+Name: age, dtype: category
+Categories (3, interval[float64]): [(17.999, 35.0] &lt; (35.0, 49.0] &lt; (49.0, 67.0]]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Question 5<a rel="noopener" class="anchor-link" href="#Question-5">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[35]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">ageMinMax</span> <span class="o">=</span> <span class="p">(</span><span class="n">bankTable</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">bankTable</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span><span class="o">/</span> <span class="p">(</span><span class="n">bankTable</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">bankTable</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[36]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">ageMinMax</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[36]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>id
+ID12101    0.612245
+ID12102    0.448980
+ID12103    0.673469
+ID12104    0.102041
+ID12105    0.795918
+ID12106    0.795918
+ID12107    0.081633
+ID12108    0.816327
+ID12109    0.387755
+ID12110    0.734694
+Name: age, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[37]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">IncomeMinMax</span> <span class="o">=</span> <span class="p">(</span><span class="n">bankTable</span><span class="p">[</span><span class="s2">&quot;income&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">bankTable</span><span class="p">[</span><span class="s2">&quot;income&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span><span class="o">/</span> <span class="p">(</span><span class="n">bankTable</span><span class="p">[</span><span class="s2">&quot;income&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">bankTable</span><span class="p">[</span><span class="s2">&quot;income&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+<span class="n">IncomeMinMax</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[37]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>id
+ID12101    0.215634
+ID12102    0.431395
+ID12103    0.198933
+ID12104    0.264320
+ID12105    0.783987
+Name: income, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[38]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">ChildrenMinMax</span> <span class="o">=</span> <span class="p">(</span><span class="n">bankTable</span><span class="p">[</span><span class="s2">&quot;children&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">bankTable</span><span class="p">[</span><span class="s2">&quot;children&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span><span class="o">/</span> <span class="p">(</span><span class="n">bankTable</span><span class="p">[</span><span class="s2">&quot;children&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">bankTable</span><span class="p">[</span><span class="s2">&quot;children&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+<span class="n">ChildrenMinMax</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[38]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>id
+ID12101    0.333333
+ID12102    1.000000
+ID12103    0.000000
+ID12104    1.000000
+ID12105    0.000000
+Name: children, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Question 6<a rel="noopener" class="anchor-link" href="#Question-6">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[39]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bankTableNew</span> <span class="o">=</span> <span class="n">bankTable</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;income&quot;</span><span class="p">,</span> <span class="s2">&quot;children&quot;</span><span class="p">])</span>
+<span class="n">bankTableNew</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[39]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>gender</th>
+      <th>region</th>
+      <th>married</th>
+      <th>car</th>
+      <th>savings_acct</th>
+      <th>current_acct</th>
+      <th>mortgage</th>
+      <th>pep</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ID12101</th>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>ID12102</th>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>ID12103</th>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>ID12104</th>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>ID12105</th>
+      <td>FEMALE</td>
+      <td>RURAL</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[40]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bankTableNew</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ageMinMax</span>
+<span class="n">bankTableNew</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[40]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>gender</th>
+      <th>region</th>
+      <th>married</th>
+      <th>car</th>
+      <th>savings_acct</th>
+      <th>current_acct</th>
+      <th>mortgage</th>
+      <th>pep</th>
+      <th>age</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ID12101</th>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>0.612245</td>
+    </tr>
+    <tr>
+      <th>ID12102</th>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>0.448980</td>
+    </tr>
+    <tr>
+      <th>ID12103</th>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>0.673469</td>
+    </tr>
+    <tr>
+      <th>ID12104</th>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>0.102041</td>
+    </tr>
+    <tr>
+      <th>ID12105</th>
+      <td>FEMALE</td>
+      <td>RURAL</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>0.795918</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[41]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bankTableNew</span><span class="p">[</span><span class="s2">&quot;income&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">IncomeMinMax</span>
+<span class="n">bankTableNew</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[41]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>gender</th>
+      <th>region</th>
+      <th>married</th>
+      <th>car</th>
+      <th>savings_acct</th>
+      <th>current_acct</th>
+      <th>mortgage</th>
+      <th>pep</th>
+      <th>age</th>
+      <th>income</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ID12101</th>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>0.612245</td>
+      <td>0.215634</td>
+    </tr>
+    <tr>
+      <th>ID12102</th>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>0.448980</td>
+      <td>0.431395</td>
+    </tr>
+    <tr>
+      <th>ID12103</th>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>0.673469</td>
+      <td>0.198933</td>
+    </tr>
+    <tr>
+      <th>ID12104</th>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>0.102041</td>
+      <td>0.264320</td>
+    </tr>
+    <tr>
+      <th>ID12105</th>
+      <td>FEMALE</td>
+      <td>RURAL</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>0.795918</td>
+      <td>0.783987</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[42]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bankTableNew</span><span class="p">[</span><span class="s2">&quot;children&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ChildrenMinMax</span>
+<span class="n">bankTableNew</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[42]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>gender</th>
+      <th>region</th>
+      <th>married</th>
+      <th>car</th>
+      <th>savings_acct</th>
+      <th>current_acct</th>
+      <th>mortgage</th>
+      <th>pep</th>
+      <th>age</th>
+      <th>income</th>
+      <th>children</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ID12101</th>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>0.612245</td>
+      <td>0.215634</td>
+      <td>0.333333</td>
+    </tr>
+    <tr>
+      <th>ID12102</th>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>0.448980</td>
+      <td>0.431395</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>ID12103</th>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>0.673469</td>
+      <td>0.198933</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>ID12104</th>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>0.102041</td>
+      <td>0.264320</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>ID12105</th>
+      <td>FEMALE</td>
+      <td>RURAL</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>0.795918</td>
+      <td>0.783987</td>
+      <td>0.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[45]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bankTableNew</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">bankTableNew</span><span class="p">)</span>
+<span class="n">bankTableNew</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[45]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>income</th>
+      <th>children</th>
+      <th>gender_FEMALE</th>
+      <th>gender_MALE</th>
+      <th>region_INNER_CITY</th>
+      <th>region_RURAL</th>
+      <th>region_SUBURBAN</th>
+      <th>region_TOWN</th>
+      <th>married_NO</th>
+      <th>...</th>
+      <th>car_NO</th>
+      <th>car_YES</th>
+      <th>savings_acct_NO</th>
+      <th>savings_acct_YES</th>
+      <th>current_acct_NO</th>
+      <th>current_acct_YES</th>
+      <th>mortgage_NO</th>
+      <th>mortgage_YES</th>
+      <th>pep_NO</th>
+      <th>pep_YES</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ID12101</th>
+      <td>0.612245</td>
+      <td>0.215634</td>
+      <td>0.333333</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>ID12102</th>
+      <td>0.448980</td>
+      <td>0.431395</td>
+      <td>1.000000</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>ID12103</th>
+      <td>0.673469</td>
+      <td>0.198933</td>
+      <td>0.000000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>ID12104</th>
+      <td>0.102041</td>
+      <td>0.264320</td>
+      <td>1.000000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>ID12105</th>
+      <td>0.795918</td>
+      <td>0.783987</td>
+      <td>0.000000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows &#215; 21 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Question 7<a rel="noopener" class="anchor-link" href="#Question-7">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[47]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">corr_Matrix</span> <span class="o">=</span> <span class="n">bankTableNew</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<span class="n">corr_Matrix</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[47]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>income</th>
+      <th>children</th>
+      <th>gender_FEMALE</th>
+      <th>gender_MALE</th>
+      <th>region_INNER_CITY</th>
+      <th>region_RURAL</th>
+      <th>region_SUBURBAN</th>
+      <th>region_TOWN</th>
+      <th>married_NO</th>
+      <th>...</th>
+      <th>car_NO</th>
+      <th>car_YES</th>
+      <th>savings_acct_NO</th>
+      <th>savings_acct_YES</th>
+      <th>current_acct_NO</th>
+      <th>current_acct_YES</th>
+      <th>mortgage_NO</th>
+      <th>mortgage_YES</th>
+      <th>pep_NO</th>
+      <th>pep_YES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>age</th>
+      <td>1.000000</td>
+      <td>0.752726</td>
+      <td>0.023572</td>
+      <td>0.090081</td>
+      <td>-0.090081</td>
+      <td>-0.025171</td>
+      <td>0.018635</td>
+      <td>0.031345</td>
+      <td>-0.008510</td>
+      <td>-0.010394</td>
+      <td>...</td>
+      <td>-0.077733</td>
+      <td>0.077733</td>
+      <td>-0.184389</td>
+      <td>0.184389</td>
+      <td>0.035312</td>
+      <td>-0.035312</td>
+      <td>0.016154</td>
+      <td>-0.016154</td>
+      <td>-0.173825</td>
+      <td>0.173825</td>
+    </tr>
+    <tr>
+      <th>income</th>
+      <td>0.752726</td>
+      <td>1.000000</td>
+      <td>0.036761</td>
+      <td>0.023845</td>
+      <td>-0.023845</td>
+      <td>-0.047564</td>
+      <td>0.084776</td>
+      <td>0.029824</td>
+      <td>-0.036431</td>
+      <td>0.008386</td>
+      <td>...</td>
+      <td>-0.081556</td>
+      <td>0.081556</td>
+      <td>-0.266164</td>
+      <td>0.266164</td>
+      <td>-0.031616</td>
+      <td>0.031616</td>
+      <td>0.014662</td>
+      <td>-0.014662</td>
+      <td>-0.221991</td>
+      <td>0.221991</td>
+    </tr>
+    <tr>
+      <th>children</th>
+      <td>0.023572</td>
+      <td>0.036761</td>
+      <td>1.000000</td>
+      <td>0.014206</td>
+      <td>-0.014206</td>
+      <td>-0.051222</td>
+      <td>0.089902</td>
+      <td>-0.014122</td>
+      <td>-0.007033</td>
+      <td>0.048716</td>
+      <td>...</td>
+      <td>-0.036455</td>
+      <td>0.036455</td>
+      <td>-0.041536</td>
+      <td>0.041536</td>
+      <td>-0.006238</td>
+      <td>0.006238</td>
+      <td>0.074339</td>
+      <td>-0.074339</td>
+      <td>0.057663</td>
+      <td>-0.057663</td>
+    </tr>
+    <tr>
+      <th>gender_FEMALE</th>
+      <td>0.090081</td>
+      <td>0.023845</td>
+      <td>0.014206</td>
+      <td>1.000000</td>
+      <td>-1.000000</td>
+      <td>-0.023459</td>
+      <td>-0.009092</td>
+      <td>-0.010951</td>
+      <td>0.040472</td>
+      <td>0.021110</td>
+      <td>...</td>
+      <td>0.006667</td>
+      <td>-0.006667</td>
+      <td>0.007207</td>
+      <td>-0.007207</td>
+      <td>-0.019466</td>
+      <td>0.019466</td>
+      <td>0.066465</td>
+      <td>-0.066465</td>
+      <td>0.046843</td>
+      <td>-0.046843</td>
+    </tr>
+    <tr>
+      <th>gender_MALE</th>
+      <td>-0.090081</td>
+      <td>-0.023845</td>
+      <td>-0.014206</td>
+      <td>-1.000000</td>
+      <td>1.000000</td>
+      <td>0.023459</td>
+      <td>0.009092</td>
+      <td>0.010951</td>
+      <td>-0.040472</td>
+      <td>-0.021110</td>
+      <td>...</td>
+      <td>-0.006667</td>
+      <td>0.006667</td>
+      <td>-0.007207</td>
+      <td>0.007207</td>
+      <td>0.019466</td>
+      <td>-0.019466</td>
+      <td>-0.066465</td>
+      <td>0.066465</td>
+      <td>-0.046843</td>
+      <td>0.046843</td>
+    </tr>
+    <tr>
+      <th>region_INNER_CITY</th>
+      <td>-0.025171</td>
+      <td>-0.047564</td>
+      <td>-0.051222</td>
+      <td>-0.023459</td>
+      <td>0.023459</td>
+      <td>1.000000</td>
+      <td>-0.393444</td>
+      <td>-0.306032</td>
+      <td>-0.573814</td>
+      <td>-0.003254</td>
+      <td>...</td>
+      <td>0.018143</td>
+      <td>-0.018143</td>
+      <td>0.091373</td>
+      <td>-0.091373</td>
+      <td>-0.007894</td>
+      <td>0.007894</td>
+      <td>-0.002098</td>
+      <td>0.002098</td>
+      <td>-0.001054</td>
+      <td>0.001054</td>
+    </tr>
+    <tr>
+      <th>region_RURAL</th>
+      <td>0.018635</td>
+      <td>0.084776</td>
+      <td>0.089902</td>
+      <td>-0.009092</td>
+      <td>0.009092</td>
+      <td>-0.393444</td>
+      <td>1.000000</td>
+      <td>-0.148158</td>
+      <td>-0.277798</td>
+      <td>0.022649</td>
+      <td>...</td>
+      <td>-0.024006</td>
+      <td>0.024006</td>
+      <td>-0.036960</td>
+      <td>0.036960</td>
+      <td>0.008496</td>
+      <td>-0.008496</td>
+      <td>0.051908</td>
+      <td>-0.051908</td>
+      <td>-0.019714</td>
+      <td>0.019714</td>
+    </tr>
+    <tr>
+      <th>region_SUBURBAN</th>
+      <td>0.031345</td>
+      <td>0.029824</td>
+      <td>-0.014122</td>
+      <td>-0.010951</td>
+      <td>0.010951</td>
+      <td>-0.306032</td>
+      <td>-0.148158</td>
+      <td>1.000000</td>
+      <td>-0.216080</td>
+      <td>-0.012483</td>
+      <td>...</td>
+      <td>0.061184</td>
+      <td>-0.061184</td>
+      <td>-0.002605</td>
+      <td>0.002605</td>
+      <td>-0.038157</td>
+      <td>0.038157</td>
+      <td>-0.004635</td>
+      <td>0.004635</td>
+      <td>-0.062508</td>
+      <td>0.062508</td>
+    </tr>
+    <tr>
+      <th>region_TOWN</th>
+      <td>-0.008510</td>
+      <td>-0.036431</td>
+      <td>-0.007033</td>
+      <td>0.040472</td>
+      <td>-0.040472</td>
+      <td>-0.573814</td>
+      <td>-0.277798</td>
+      <td>-0.216080</td>
+      <td>1.000000</td>
+      <td>-0.006369</td>
+      <td>...</td>
+      <td>-0.041604</td>
+      <td>0.041604</td>
+      <td>-0.068654</td>
+      <td>0.068654</td>
+      <td>0.027431</td>
+      <td>-0.027431</td>
+      <td>-0.036591</td>
+      <td>0.036591</td>
+      <td>0.059115</td>
+      <td>-0.059115</td>
+    </tr>
+    <tr>
+      <th>married_NO</th>
+      <td>-0.010394</td>
+      <td>0.008386</td>
+      <td>0.048716</td>
+      <td>0.021110</td>
+      <td>-0.021110</td>
+      <td>-0.003254</td>
+      <td>0.022649</td>
+      <td>-0.012483</td>
+      <td>-0.006369</td>
+      <td>1.000000</td>
+      <td>...</td>
+      <td>-0.009571</td>
+      <td>0.009571</td>
+      <td>0.028604</td>
+      <td>-0.028604</td>
+      <td>-0.059996</td>
+      <td>0.059996</td>
+      <td>-0.021711</td>
+      <td>0.021711</td>
+      <td>-0.189578</td>
+      <td>0.189578</td>
+    </tr>
+    <tr>
+      <th>married_YES</th>
+      <td>0.010394</td>
+      <td>-0.008386</td>
+      <td>-0.048716</td>
+      <td>-0.021110</td>
+      <td>0.021110</td>
+      <td>0.003254</td>
+      <td>-0.022649</td>
+      <td>0.012483</td>
+      <td>0.006369</td>
+      <td>-1.000000</td>
+      <td>...</td>
+      <td>0.009571</td>
+      <td>-0.009571</td>
+      <td>-0.028604</td>
+      <td>0.028604</td>
+      <td>0.059996</td>
+      <td>-0.059996</td>
+      <td>0.021711</td>
+      <td>-0.021711</td>
+      <td>0.189578</td>
+      <td>-0.189578</td>
+    </tr>
+    <tr>
+      <th>car_NO</th>
+      <td>-0.077733</td>
+      <td>-0.081556</td>
+      <td>-0.036455</td>
+      <td>0.006667</td>
+      <td>-0.006667</td>
+      <td>0.018143</td>
+      <td>-0.024006</td>
+      <td>0.061184</td>
+      <td>-0.041604</td>
+      <td>-0.009571</td>
+      <td>...</td>
+      <td>1.000000</td>
+      <td>-1.000000</td>
+      <td>0.034310</td>
+      <td>-0.034310</td>
+      <td>-0.034783</td>
+      <td>0.034783</td>
+      <td>-0.007743</td>
+      <td>0.007743</td>
+      <td>0.018917</td>
+      <td>-0.018917</td>
+    </tr>
+    <tr>
+      <th>car_YES</th>
+      <td>0.077733</td>
+      <td>0.081556</td>
+      <td>0.036455</td>
+      <td>-0.006667</td>
+      <td>0.006667</td>
+      <td>-0.018143</td>
+      <td>0.024006</td>
+      <td>-0.061184</td>
+      <td>0.041604</td>
+      <td>0.009571</td>
+      <td>...</td>
+      <td>-1.000000</td>
+      <td>1.000000</td>
+      <td>-0.034310</td>
+      <td>0.034310</td>
+      <td>0.034783</td>
+      <td>-0.034783</td>
+      <td>0.007743</td>
+      <td>-0.007743</td>
+      <td>-0.018917</td>
+      <td>0.018917</td>
+    </tr>
+    <tr>
+      <th>savings_acct_NO</th>
+      <td>-0.184389</td>
+      <td>-0.266164</td>
+      <td>-0.041536</td>
+      <td>0.007207</td>
+      <td>-0.007207</td>
+      <td>0.091373</td>
+      <td>-0.036960</td>
+      <td>-0.002605</td>
+      <td>-0.068654</td>
+      <td>0.028604</td>
+      <td>...</td>
+      <td>0.034310</td>
+      <td>-0.034310</td>
+      <td>1.000000</td>
+      <td>-1.000000</td>
+      <td>0.042511</td>
+      <td>-0.042511</td>
+      <td>-0.001588</td>
+      <td>0.001588</td>
+      <td>-0.072779</td>
+      <td>0.072779</td>
+    </tr>
+    <tr>
+      <th>savings_acct_YES</th>
+      <td>0.184389</td>
+      <td>0.266164</td>
+      <td>0.041536</td>
+      <td>-0.007207</td>
+      <td>0.007207</td>
+      <td>-0.091373</td>
+      <td>0.036960</td>
+      <td>0.002605</td>
+      <td>0.068654</td>
+      <td>-0.028604</td>
+      <td>...</td>
+      <td>-0.034310</td>
+      <td>0.034310</td>
+      <td>-1.000000</td>
+      <td>1.000000</td>
+      <td>-0.042511</td>
+      <td>0.042511</td>
+      <td>0.001588</td>
+      <td>-0.001588</td>
+      <td>0.072779</td>
+      <td>-0.072779</td>
+    </tr>
+    <tr>
+      <th>current_acct_NO</th>
+      <td>0.035312</td>
+      <td>-0.031616</td>
+      <td>-0.006238</td>
+      <td>-0.019466</td>
+      <td>0.019466</td>
+      <td>-0.007894</td>
+      <td>0.008496</td>
+      <td>-0.038157</td>
+      <td>0.027431</td>
+      <td>-0.059996</td>
+      <td>...</td>
+      <td>-0.034783</td>
+      <td>0.034783</td>
+      <td>0.042511</td>
+      <td>-0.042511</td>
+      <td>1.000000</td>
+      <td>-1.000000</td>
+      <td>-0.036704</td>
+      <td>0.036704</td>
+      <td>0.025141</td>
+      <td>-0.025141</td>
+    </tr>
+    <tr>
+      <th>current_acct_YES</th>
+      <td>-0.035312</td>
+      <td>0.031616</td>
+      <td>0.006238</td>
+      <td>0.019466</td>
+      <td>-0.019466</td>
+      <td>0.007894</td>
+      <td>-0.008496</td>
+      <td>0.038157</td>
+      <td>-0.027431</td>
+      <td>0.059996</td>
+      <td>...</td>
+      <td>0.034783</td>
+      <td>-0.034783</td>
+      <td>-0.042511</td>
+      <td>0.042511</td>
+      <td>-1.000000</td>
+      <td>1.000000</td>
+      <td>0.036704</td>
+      <td>-0.036704</td>
+      <td>-0.025141</td>
+      <td>0.025141</td>
+    </tr>
+    <tr>
+      <th>mortgage_NO</th>
+      <td>0.016154</td>
+      <td>0.014662</td>
+      <td>0.074339</td>
+      <td>0.066465</td>
+      <td>-0.066465</td>
+      <td>-0.002098</td>
+      <td>0.051908</td>
+      <td>-0.004635</td>
+      <td>-0.036591</td>
+      <td>-0.021711</td>
+      <td>...</td>
+      <td>-0.007743</td>
+      <td>0.007743</td>
+      <td>-0.001588</td>
+      <td>0.001588</td>
+      <td>-0.036704</td>
+      <td>0.036704</td>
+      <td>1.000000</td>
+      <td>-1.000000</td>
+      <td>-0.024182</td>
+      <td>0.024182</td>
+    </tr>
+    <tr>
+      <th>mortgage_YES</th>
+      <td>-0.016154</td>
+      <td>-0.014662</td>
+      <td>-0.074339</td>
+      <td>-0.066465</td>
+      <td>0.066465</td>
+      <td>0.002098</td>
+      <td>-0.051908</td>
+      <td>0.004635</td>
+      <td>0.036591</td>
+      <td>0.021711</td>
+      <td>...</td>
+      <td>0.007743</td>
+      <td>-0.007743</td>
+      <td>0.001588</td>
+      <td>-0.001588</td>
+      <td>0.036704</td>
+      <td>-0.036704</td>
+      <td>-1.000000</td>
+      <td>1.000000</td>
+      <td>0.024182</td>
+      <td>-0.024182</td>
+    </tr>
+    <tr>
+      <th>pep_NO</th>
+      <td>-0.173825</td>
+      <td>-0.221991</td>
+      <td>0.057663</td>
+      <td>0.046843</td>
+      <td>-0.046843</td>
+      <td>-0.001054</td>
+      <td>-0.019714</td>
+      <td>-0.062508</td>
+      <td>0.059115</td>
+      <td>-0.189578</td>
+      <td>...</td>
+      <td>0.018917</td>
+      <td>-0.018917</td>
+      <td>-0.072779</td>
+      <td>0.072779</td>
+      <td>0.025141</td>
+      <td>-0.025141</td>
+      <td>-0.024182</td>
+      <td>0.024182</td>
+      <td>1.000000</td>
+      <td>-1.000000</td>
+    </tr>
+    <tr>
+      <th>pep_YES</th>
+      <td>0.173825</td>
+      <td>0.221991</td>
+      <td>-0.057663</td>
+      <td>-0.046843</td>
+      <td>0.046843</td>
+      <td>0.001054</td>
+      <td>0.019714</td>
+      <td>0.062508</td>
+      <td>-0.059115</td>
+      <td>0.189578</td>
+      <td>...</td>
+      <td>-0.018917</td>
+      <td>0.018917</td>
+      <td>0.072779</td>
+      <td>-0.072779</td>
+      <td>-0.025141</td>
+      <td>0.025141</td>
+      <td>0.024182</td>
+      <td>-0.024182</td>
+      <td>-1.000000</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+<p>21 rows &#215; 21 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[49]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">corr_Matrix</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[49]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>age                  1.000000
+income               0.752726
+savings_acct_YES     0.184389
+pep_YES              0.173825
+gender_FEMALE        0.090081
+car_YES              0.077733
+current_acct_NO      0.035312
+region_SUBURBAN      0.031345
+children             0.023572
+region_RURAL         0.018635
+mortgage_NO          0.016154
+married_YES          0.010394
+region_TOWN         -0.008510
+married_NO          -0.010394
+mortgage_YES        -0.016154
+region_INNER_CITY   -0.025171
+current_acct_YES    -0.035312
+car_NO              -0.077733
+gender_MALE         -0.090081
+pep_NO              -0.173825
+savings_acct_NO     -0.184389
+Name: age, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[50]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">corr_Matrix</span><span class="p">[</span><span class="s2">&quot;income&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[50]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>income               1.000000
+age                  0.752726
+savings_acct_YES     0.266164
+pep_YES              0.221991
+region_RURAL         0.084776
+car_YES              0.081556
+children             0.036761
+current_acct_YES     0.031616
+region_SUBURBAN      0.029824
+gender_FEMALE        0.023845
+mortgage_NO          0.014662
+married_NO           0.008386
+married_YES         -0.008386
+mortgage_YES        -0.014662
+gender_MALE         -0.023845
+current_acct_NO     -0.031616
+region_TOWN         -0.036431
+region_INNER_CITY   -0.047564
+car_NO              -0.081556
+pep_NO              -0.221991
+savings_acct_NO     -0.266164
+Name: income, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[51]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">corr_Matrix</span><span class="p">[</span><span class="s2">&quot;children&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[51]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>children             1.000000
+region_RURAL         0.089902
+mortgage_NO          0.074339
+pep_NO               0.057663
+married_NO           0.048716
+savings_acct_YES     0.041536
+income               0.036761
+car_YES              0.036455
+age                  0.023572
+gender_FEMALE        0.014206
+current_acct_YES     0.006238
+current_acct_NO     -0.006238
+region_TOWN         -0.007033
+region_SUBURBAN     -0.014122
+gender_MALE         -0.014206
+car_NO              -0.036455
+savings_acct_NO     -0.041536
+married_YES         -0.048716
+region_INNER_CITY   -0.051222
+pep_YES             -0.057663
+mortgage_YES        -0.074339
+Name: children, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[52]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">corr_Matrix</span><span class="p">[</span><span class="s2">&quot;gender_FEMALE&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[52]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>gender_FEMALE        1.000000
+age                  0.090081
+mortgage_NO          0.066465
+pep_NO               0.046843
+region_TOWN          0.040472
+income               0.023845
+married_NO           0.021110
+current_acct_YES     0.019466
+children             0.014206
+savings_acct_NO      0.007207
+car_NO               0.006667
+car_YES             -0.006667
+savings_acct_YES    -0.007207
+region_RURAL        -0.009092
+region_SUBURBAN     -0.010951
+current_acct_NO     -0.019466
+married_YES         -0.021110
+region_INNER_CITY   -0.023459
+pep_YES             -0.046843
+mortgage_YES        -0.066465
+gender_MALE         -1.000000
+Name: gender_FEMALE, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[54]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">corr_Matrix</span><span class="p">[</span><span class="s2">&quot;gender_MALE&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[54]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>gender_MALE          1.000000
+mortgage_YES         0.066465
+pep_YES              0.046843
+region_INNER_CITY    0.023459
+married_YES          0.021110
+current_acct_NO      0.019466
+region_SUBURBAN      0.010951
+region_RURAL         0.009092
+savings_acct_YES     0.007207
+car_YES              0.006667
+car_NO              -0.006667
+savings_acct_NO     -0.007207
+children            -0.014206
+current_acct_YES    -0.019466
+married_NO          -0.021110
+income              -0.023845
+region_TOWN         -0.040472
+pep_NO              -0.046843
+mortgage_NO         -0.066465
+age                 -0.090081
+gender_FEMALE       -1.000000
+Name: gender_MALE, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[55]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">corr_Matrix</span><span class="p">[</span><span class="s2">&quot;region_INNER_CITY&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[55]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>region_INNER_CITY    1.000000
+savings_acct_NO      0.091373
+gender_MALE          0.023459
+car_NO               0.018143
+current_acct_YES     0.007894
+married_YES          0.003254
+mortgage_YES         0.002098
+pep_YES              0.001054
+pep_NO              -0.001054
+mortgage_NO         -0.002098
+married_NO          -0.003254
+current_acct_NO     -0.007894
+car_YES             -0.018143
+gender_FEMALE       -0.023459
+age                 -0.025171
+income              -0.047564
+children            -0.051222
+savings_acct_YES    -0.091373
+region_SUBURBAN     -0.306032
+region_RURAL        -0.393444
+region_TOWN         -0.573814
+Name: region_INNER_CITY, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[56]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">corr_Matrix</span><span class="p">[</span><span class="s2">&quot;region_RURAL&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[56]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>region_RURAL         1.000000
+children             0.089902
+income               0.084776
+mortgage_NO          0.051908
+savings_acct_YES     0.036960
+car_YES              0.024006
+married_NO           0.022649
+pep_YES              0.019714
+age                  0.018635
+gender_MALE          0.009092
+current_acct_NO      0.008496
+current_acct_YES    -0.008496
+gender_FEMALE       -0.009092
+pep_NO              -0.019714
+married_YES         -0.022649
+car_NO              -0.024006
+savings_acct_NO     -0.036960
+mortgage_YES        -0.051908
+region_SUBURBAN     -0.148158
+region_TOWN         -0.277798
+region_INNER_CITY   -0.393444
+Name: region_RURAL, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[57]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">corr_Matrix</span><span class="p">[</span><span class="s2">&quot;region_SUBURBAN&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[57]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>region_SUBURBAN      1.000000
+pep_YES              0.062508
+car_NO               0.061184
+current_acct_YES     0.038157
+age                  0.031345
+income               0.029824
+married_YES          0.012483
+gender_MALE          0.010951
+mortgage_YES         0.004635
+savings_acct_YES     0.002605
+savings_acct_NO     -0.002605
+mortgage_NO         -0.004635
+gender_FEMALE       -0.010951
+married_NO          -0.012483
+children            -0.014122
+current_acct_NO     -0.038157
+car_YES             -0.061184
+pep_NO              -0.062508
+region_RURAL        -0.148158
+region_TOWN         -0.216080
+region_INNER_CITY   -0.306032
+Name: region_SUBURBAN, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[58]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">corr_Matrix</span><span class="p">[</span><span class="s2">&quot;region_TOWN&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[58]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>region_TOWN          1.000000
+savings_acct_YES     0.068654
+pep_NO               0.059115
+car_YES              0.041604
+gender_FEMALE        0.040472
+mortgage_YES         0.036591
+current_acct_NO      0.027431
+married_YES          0.006369
+married_NO          -0.006369
+children            -0.007033
+age                 -0.008510
+current_acct_YES    -0.027431
+income              -0.036431
+mortgage_NO         -0.036591
+gender_MALE         -0.040472
+car_NO              -0.041604
+pep_YES             -0.059115
+savings_acct_NO     -0.068654
+region_SUBURBAN     -0.216080
+region_RURAL        -0.277798
+region_INNER_CITY   -0.573814
+Name: region_TOWN, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[59]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">corr_Matrix</span><span class="p">[</span><span class="s2">&quot;married_NO&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[59]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>married_NO           1.000000
+pep_YES              0.189578
+current_acct_YES     0.059996
+children             0.048716
+savings_acct_NO      0.028604
+region_RURAL         0.022649
+mortgage_YES         0.021711
+gender_FEMALE        0.021110
+car_YES              0.009571
+income               0.008386
+region_INNER_CITY   -0.003254
+region_TOWN         -0.006369
+car_NO              -0.009571
+age                 -0.010394
+region_SUBURBAN     -0.012483
+gender_MALE         -0.021110
+mortgage_NO         -0.021711
+savings_acct_YES    -0.028604
+current_acct_NO     -0.059996
+pep_NO              -0.189578
+married_YES         -1.000000
+Name: married_NO, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[60]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">corr_Matrix</span><span class="p">[</span><span class="s2">&quot;married_YES&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[60]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>married_YES          1.000000
+pep_NO               0.189578
+current_acct_NO      0.059996
+savings_acct_YES     0.028604
+mortgage_NO          0.021711
+gender_MALE          0.021110
+region_SUBURBAN      0.012483
+age                  0.010394
+car_NO               0.009571
+region_TOWN          0.006369
+region_INNER_CITY    0.003254
+income              -0.008386
+car_YES             -0.009571
+gender_FEMALE       -0.021110
+mortgage_YES        -0.021711
+region_RURAL        -0.022649
+savings_acct_NO     -0.028604
+children            -0.048716
+current_acct_YES    -0.059996
+pep_YES             -0.189578
+married_NO          -1.000000
+Name: married_YES, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[61]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">corr_Matrix</span><span class="p">[</span><span class="s2">&quot;car_YES&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[61]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>car_YES              1.000000
+income               0.081556
+age                  0.077733
+region_TOWN          0.041604
+children             0.036455
+current_acct_NO      0.034783
+savings_acct_YES     0.034310
+region_RURAL         0.024006
+pep_YES              0.018917
+married_NO           0.009571
+mortgage_NO          0.007743
+gender_MALE          0.006667
+gender_FEMALE       -0.006667
+mortgage_YES        -0.007743
+married_YES         -0.009571
+region_INNER_CITY   -0.018143
+pep_NO              -0.018917
+savings_acct_NO     -0.034310
+current_acct_YES    -0.034783
+region_SUBURBAN     -0.061184
+car_NO              -1.000000
+Name: car_YES, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[62]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">corr_Matrix</span><span class="p">[</span><span class="s2">&quot;car_NO&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[62]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>car_NO               1.000000
+region_SUBURBAN      0.061184
+current_acct_YES     0.034783
+savings_acct_NO      0.034310
+pep_NO               0.018917
+region_INNER_CITY    0.018143
+married_YES          0.009571
+mortgage_YES         0.007743
+gender_FEMALE        0.006667
+gender_MALE         -0.006667
+mortgage_NO         -0.007743
+married_NO          -0.009571
+pep_YES             -0.018917
+region_RURAL        -0.024006
+savings_acct_YES    -0.034310
+current_acct_NO     -0.034783
+children            -0.036455
+region_TOWN         -0.041604
+age                 -0.077733
+income              -0.081556
+car_YES             -1.000000
+Name: car_NO, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[63]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">corr_Matrix</span><span class="p">[</span><span class="s2">&quot;savings_acct_NO&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[63]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>savings_acct_NO      1.000000
+region_INNER_CITY    0.091373
+pep_YES              0.072779
+current_acct_NO      0.042511
+car_NO               0.034310
+married_NO           0.028604
+gender_FEMALE        0.007207
+mortgage_YES         0.001588
+mortgage_NO         -0.001588
+region_SUBURBAN     -0.002605
+gender_MALE         -0.007207
+married_YES         -0.028604
+car_YES             -0.034310
+region_RURAL        -0.036960
+children            -0.041536
+current_acct_YES    -0.042511
+region_TOWN         -0.068654
+pep_NO              -0.072779
+age                 -0.184389
+income              -0.266164
+savings_acct_YES    -1.000000
+Name: savings_acct_NO, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[64]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">corr_Matrix</span><span class="p">[</span><span class="s2">&quot;savings_acct_YES&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[64]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>savings_acct_YES     1.000000
+income               0.266164
+age                  0.184389
+pep_NO               0.072779
+region_TOWN          0.068654
+current_acct_YES     0.042511
+children             0.041536
+region_RURAL         0.036960
+car_YES              0.034310
+married_YES          0.028604
+gender_MALE          0.007207
+region_SUBURBAN      0.002605
+mortgage_NO          0.001588
+mortgage_YES        -0.001588
+gender_FEMALE       -0.007207
+married_NO          -0.028604
+car_NO              -0.034310
+current_acct_NO     -0.042511
+pep_YES             -0.072779
+region_INNER_CITY   -0.091373
+savings_acct_NO     -1.000000
+Name: savings_acct_YES, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[65]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">corr_Matrix</span><span class="p">[</span><span class="s2">&quot;current_acct_YES&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[65]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>current_acct_YES     1.000000
+married_NO           0.059996
+savings_acct_YES     0.042511
+region_SUBURBAN      0.038157
+mortgage_NO          0.036704
+car_NO               0.034783
+income               0.031616
+pep_YES              0.025141
+gender_FEMALE        0.019466
+region_INNER_CITY    0.007894
+children             0.006238
+region_RURAL        -0.008496
+gender_MALE         -0.019466
+pep_NO              -0.025141
+region_TOWN         -0.027431
+car_YES             -0.034783
+age                 -0.035312
+mortgage_YES        -0.036704
+savings_acct_NO     -0.042511
+married_YES         -0.059996
+current_acct_NO     -1.000000
+Name: current_acct_YES, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[66]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">corr_Matrix</span><span class="p">[</span><span class="s2">&quot;current_acct_NO&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[66]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>current_acct_NO      1.000000
+married_YES          0.059996
+savings_acct_NO      0.042511
+mortgage_YES         0.036704
+age                  0.035312
+car_YES              0.034783
+region_TOWN          0.027431
+pep_NO               0.025141
+gender_MALE          0.019466
+region_RURAL         0.008496
+children            -0.006238
+region_INNER_CITY   -0.007894
+gender_FEMALE       -0.019466
+pep_YES             -0.025141
+income              -0.031616
+car_NO              -0.034783
+mortgage_NO         -0.036704
+region_SUBURBAN     -0.038157
+savings_acct_YES    -0.042511
+married_NO          -0.059996
+current_acct_YES    -1.000000
+Name: current_acct_NO, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[67]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">corr_Matrix</span><span class="p">[</span><span class="s2">&quot;mortgage_YES&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[67]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>mortgage_YES         1.000000
+gender_MALE          0.066465
+current_acct_NO      0.036704
+region_TOWN          0.036591
+pep_NO               0.024182
+married_NO           0.021711
+car_NO               0.007743
+region_SUBURBAN      0.004635
+region_INNER_CITY    0.002098
+savings_acct_NO      0.001588
+savings_acct_YES    -0.001588
+car_YES             -0.007743
+income              -0.014662
+age                 -0.016154
+married_YES         -0.021711
+pep_YES             -0.024182
+current_acct_YES    -0.036704
+region_RURAL        -0.051908
+gender_FEMALE       -0.066465
+children            -0.074339
+mortgage_NO         -1.000000
+Name: mortgage_YES, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[68]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">corr_Matrix</span><span class="p">[</span><span class="s2">&quot;mortgage_NO&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[68]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>mortgage_NO          1.000000
+children             0.074339
+gender_FEMALE        0.066465
+region_RURAL         0.051908
+current_acct_YES     0.036704
+pep_YES              0.024182
+married_YES          0.021711
+age                  0.016154
+income               0.014662
+car_YES              0.007743
+savings_acct_YES     0.001588
+savings_acct_NO     -0.001588
+region_INNER_CITY   -0.002098
+region_SUBURBAN     -0.004635
+car_NO              -0.007743
+married_NO          -0.021711
+pep_NO              -0.024182
+region_TOWN         -0.036591
+current_acct_NO     -0.036704
+gender_MALE         -0.066465
+mortgage_YES        -1.000000
+Name: mortgage_NO, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[69]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">corr_Matrix</span><span class="p">[</span><span class="s2">&quot;pep_YES&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[69]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>pep_YES              1.000000
+income               0.221991
+married_NO           0.189578
+age                  0.173825
+savings_acct_NO      0.072779
+region_SUBURBAN      0.062508
+gender_MALE          0.046843
+current_acct_YES     0.025141
+mortgage_NO          0.024182
+region_RURAL         0.019714
+car_YES              0.018917
+region_INNER_CITY    0.001054
+car_NO              -0.018917
+mortgage_YES        -0.024182
+current_acct_NO     -0.025141
+gender_FEMALE       -0.046843
+children            -0.057663
+region_TOWN         -0.059115
+savings_acct_YES    -0.072779
+married_YES         -0.189578
+pep_NO              -1.000000
+Name: pep_YES, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[70]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">corr_Matrix</span><span class="p">[</span><span class="s2">&quot;pep_NO&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[70]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>pep_NO               1.000000
+married_YES          0.189578
+savings_acct_YES     0.072779
+region_TOWN          0.059115
+children             0.057663
+gender_FEMALE        0.046843
+current_acct_NO      0.025141
+mortgage_YES         0.024182
+car_NO               0.018917
+region_INNER_CITY   -0.001054
+car_YES             -0.018917
+region_RURAL        -0.019714
+mortgage_NO         -0.024182
+current_acct_YES    -0.025141
+gender_MALE         -0.046843
+region_SUBURBAN     -0.062508
+savings_acct_NO     -0.072779
+age                 -0.173825
+married_NO          -0.189578
+income              -0.221991
+pep_YES             -1.000000
+Name: pep_NO, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Correlation Breakdown<a rel="noopener" class="anchor-link" href="#Correlation-Breakdown">&#182;</a></h1><p>Age and income are highly correlated with correlation value of 0.75 indicating those with a higher age also tend to earn a higher income. The dummy variables with just two values, gender, married, car, mortage, and so on all have a perfect negative correlation with each other. Inner city and towns have a moderate to high negative correation with each other of -.57.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Question 8<a rel="noopener" class="anchor-link" href="#Question-8">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[71]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bankTable</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[71]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>income</th>
+      <th>children</th>
+      <th>gender</th>
+      <th>region</th>
+      <th>married</th>
+      <th>car</th>
+      <th>savings_acct</th>
+      <th>current_acct</th>
+      <th>mortgage</th>
+      <th>pep</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ID12101</th>
+      <td>48</td>
+      <td>17546.0</td>
+      <td>1</td>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>ID12102</th>
+      <td>40</td>
+      <td>30085.1</td>
+      <td>3</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>ID12103</th>
+      <td>51</td>
+      <td>16575.4</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>ID12104</th>
+      <td>23</td>
+      <td>20375.4</td>
+      <td>3</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>ID12105</th>
+      <td>57</td>
+      <td>50576.3</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>RURAL</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[73]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bankTable</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;income&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;scatter&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[73]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fa136a9c820&gt;</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea">
+<img src="javascript://"/>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Scatterpolt breakdown<a rel="noopener" class="anchor-link" href="#Scatterpolt-breakdown">&#182;</a></h2><p>There does appear to be a strong positive correlation between age and income. As one of the variables increases, we can see an increase in the other variable as well.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Question 9<a rel="noopener" class="anchor-link" href="#Question-9">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[74]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bankTable</span><span class="p">[</span><span class="s2">&quot;income&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;hist&quot;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[74]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fa136b9ffa0&gt;</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea">
+<img src="javascript://"/>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[75]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bankTable</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;hist&quot;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[75]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fa136c82730&gt;</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea">
+<img src="javascript://"/>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Question 10<a rel="noopener" class="anchor-link" href="#Question-10">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[76]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bankTable</span><span class="p">[</span><span class="s2">&quot;region&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[76]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fa136d4cc10&gt;</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea">
+<img src="javascript://"/>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Question 11<a rel="noopener" class="anchor-link" href="#Question-11">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[78]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">gg</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">bankTable</span><span class="p">[</span><span class="s2">&quot;region&quot;</span><span class="p">],</span> <span class="n">bankTable</span><span class="p">[</span><span class="s2">&quot;pep&quot;</span><span class="p">])</span>
+<span class="n">gg</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[78]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>pep</th>
+      <th>NO</th>
+      <th>YES</th>
+    </tr>
+    <tr>
+      <th>region</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>INNER_CITY</th>
+      <td>146</td>
+      <td>123</td>
+    </tr>
+    <tr>
+      <th>RURAL</th>
+      <td>50</td>
+      <td>46</td>
+    </tr>
+    <tr>
+      <th>SUBURBAN</th>
+      <td>28</td>
+      <td>34</td>
+    </tr>
+    <tr>
+      <th>TOWN</th>
+      <td>102</td>
+      <td>71</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[79]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">gg</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea">
+<img src="javascript://"/>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    </div>
+  </div>
+
+
+ 
+
+
+
+<script type="text/javascript" src="/d2l/common/math/MathML.js?v=20.21.12.34125 "></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function() { D2LMathML.DesktopInit('https://s.brightspace.com/lib/mathjax/2.7.4/MathJax.js?config=MML_HTMLorMML','https://s.brightspace.com/lib/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML','130',false); });</script></body></html>
